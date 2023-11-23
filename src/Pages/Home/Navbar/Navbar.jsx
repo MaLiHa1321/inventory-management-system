@@ -1,12 +1,14 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../../../hook/useAuth';
 
 const Navbar = () => {
+    const {user, logOutUser } = useAuth()
     const navLinks =<>
     <NavLink to='/'  className='mr-3 text-2xl'>Home</NavLink>
     <NavLink to='/login' className='mr-3 text-2xl'>Login</NavLink>
     <NavLink to='/register' className='mr-3 text-2xl'>Register</NavLink>
-    <NavLink to='/' className='mr-3 text-2xl'>Create Shop</NavLink>
+    <NavLink to='/createShop' className='mr-3 text-2xl'>Create Shop</NavLink>
     <NavLink to='https://youtu.be/gDUzaANQ01A' target="_blank" rel="noopener noreferrer" className='mr-3 text-2xl'>Watch Demo</NavLink>
     </>
     return (
@@ -28,7 +30,18 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+        {
+    user?.email ?  <div className="navbar-end flex flex-col lg:flex-row">
+      <img className='w-[40px] h-[40px] rounded-full' src={user?.photoURL} alt="" />
+      <p>{user.displayName}</p>
+    <a onClick={logOutUser} className="btn">Logout</a>
+  </div>
+  :  <div className="navbar-end">
+    <Link to="/login">
+    <a className="btn">Login</a>
+    </Link>
+  </div>
+  }
         </div>
       </div>
     );

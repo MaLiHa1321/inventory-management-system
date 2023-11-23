@@ -6,6 +6,8 @@ import Home from "../Pages/Home/Home";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoutes";
+import CreateShop from "../Pages/CreateShop/CreateShop";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -24,6 +26,12 @@ import Register from "../Authentication/Register";
         {
             path: 'register',
             element: <Register></Register>
+        },
+        {
+            path: 'createShop',
+            element: <PrivateRoute>
+                <CreateShop></CreateShop>
+            </PrivateRoute>
         }
       ]
     },

@@ -1,12 +1,14 @@
 
-import { Link } from 'react-router-dom';
-// import SocialLogin from './SocialLogin';
+import { Link, useLocation, useNavigate} from 'react-router-dom';
+import SocialLogin from './SocialLogin';
+import useAuth from '../hook/useAuth';
+import toast, { Toaster } from 'react-hot-toast';
 
-// import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
-
- 
+   const {loginUser} = useAuth()
+   const navigate = useNavigate()
+   const location = useLocation();
   const handleLogin = e =>{
      e.preventDefault()
      const form = e.target;
@@ -14,17 +16,23 @@ const Login = () => {
      const password = form.password.value;
      console.log(email,password)
 
-    //  userLogin(email,password)
-    //  .then(res => {
-    //   toast.success('login successful')
-    //   navigate('/')
-    //  })
-    //  .catch(err => {
-    //   toast.error("invalid email or password")
-    //  })
+     loginUser(email,password)
+     .then(res => {
+        console.log(res.user)
+      toast.success('login successful')
+      navigate(location?.state ? location?.state : '/')
+     })
+     .catch(err => {
+
+      toast.error("invalid email or password")
+     })
   }
     return (
         <div>
+                   <Toaster
+        position="top-right"
+        reverseOrder={false}
+      />
       
           <h1 className='text-3xl text-center'>Please Login</h1>
              <form onSubmit={handleLogin} className="card-body w-full mx-auto md:w-3/4 lg:w-1/2">
@@ -45,7 +53,7 @@ const Login = () => {
           <button className="btn btn-primary">Login</button>
         </div>
         <div className='mt-5'>
-          {/* <SocialLogin></SocialLogin> */}
+          <SocialLogin></SocialLogin>
         </div>
       </form>
 
