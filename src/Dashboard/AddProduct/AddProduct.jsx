@@ -11,6 +11,7 @@ const AddProduct = () => {
     useEffect(()=>{
         axiosSecure.get(`/shop?email=${userEmail}`)
         .then(res =>{
+            console.log(res.data)
             setShop(res.data)
            
         })
@@ -25,6 +26,7 @@ const AddProduct = () => {
         const productCost = parseFloat(form.cost.value);
         const profit = parseFloat(form.profit.value);
         const discount = form.discount.value;
+        const location = form.location.value;
         const sales = form.sales.value;
         const info = form.des.value;
         const tax = 0.075;
@@ -35,15 +37,23 @@ const AddProduct = () => {
         const imageData = await imageUpload(image)
         const photo = imageData?.data?.display_url;
         const buyingDate = new Date();
-        const productaddInfo ={shopName,email,photo,productName,quantity,discount,sellingPrice,info,productCost,profit,sales,buyingDate
+        const productaddInfo ={shopName,email,photo,productName,
+            quantity,discount,sellingPrice,info,productCost,profit,sales,buyingDate,location
         }
-        axiosSecure.post('/product', productaddInfo)
-        .then(res => {
-            console.log(res.data)
-        })
-        .catch(err =>{
-            console.log(err)
-        })
+         
+        const userProductCountResponse = await axiosSecure.get(`/product?email=${userEmail}`);
+        const userProductCount = userProductCountResponse.data.length;
+      
+
+        if (userProductCount < 3){
+                const response = await axiosSecure.post('/product', productaddInfo);
+                console.log(response.data); 
+        }
+        else{
+           alert('User product limit exceeded')
+           return;
+        }
+    
     }
 
     return (
@@ -78,6 +88,12 @@ const AddProduct = () => {
                 </div>
                 <div className="form-control">
                   <label className="label">
+                    <span className="label-text">Product Location</span>
+                  </label>
+                  <input type="text" placeholder="Product Location" name="location" className="input input-bordered" required />
+                </div>
+                <div className="form-control">
+                  <label className="label">
                     <span className="label-text">Product Discount</span>
                   </label>
                   <input type="number" placeholder="Product Discount" name="discount" className="input input-bordered" required />
@@ -102,7 +118,7 @@ const AddProduct = () => {
                   <input type="file" id="image" name="image"  className="file-input file-input-bordered file-input-primary w-full max-w-xs" />
                 </div>
                 <div className="form-control m-6">
-                  <button className="btn btn-primary">Add Shop</button>
+                  <button className="btn btn-primary">Add Product</button>
                 </div>
                 
                         </form>

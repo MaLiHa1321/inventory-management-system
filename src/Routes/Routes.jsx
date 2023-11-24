@@ -12,6 +12,8 @@ import Dashboard from "../Layout/Dashboard";
 import UserHome from "../Dashboard/UserHome/UserHome";
 import AddProduct from "../Dashboard/AddProduct/AddProduct";
 import AddProductbtn from "../Dashboard/AddProduct/AddProductbtn";
+import ProductDetails from "../Dashboard/ProductDetalis/ProductDetails";
+import UpdateProduct from "../Dashboard/UpdateProduct/UpdateProduct";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -55,7 +57,16 @@ import AddProductbtn from "../Dashboard/AddProduct/AddProductbtn";
         {
           path: 'addProduct',
           element: <AddProduct></AddProduct>
-        }
+        },
+        {
+          path: 'allProducts',
+          element: <ProductDetails></ProductDetails>
+        },
+        {
+          path: 'updateProduct/:id',
+          element: <UpdateProduct></UpdateProduct>,
+          loader: ({params}) => fetch(`http://localhost:5000/product/${params.id}`)
+        },
        ]
     }
   ]);

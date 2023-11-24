@@ -14,7 +14,7 @@ const Sidebar = () => {
     useEffect(()=>{
         axiosSecure.get(`/shop?email=${userEmail}`)
         .then(res =>{
-            console.log(res.data)
+            // console.log(res.data)
             setShop(res.data)
         })
         .catch(err => console.log(err))
@@ -60,8 +60,11 @@ const Sidebar = () => {
 
           {/* Nav Items */}
             <ul>
-                <li><NavLink to='/dashboard/userHome' className='m-3'>Home</NavLink></li>
+                <li><NavLink to='/dashboard/userHome' className='m-3'>UserHome</NavLink></li>
                 <li><NavLink to='/dashboard/addProductbtn'>Add Product</NavLink></li>
+                <li><NavLink to='/dashboard/allProducts'>Manage Product</NavLink></li>
+                <div className="divider"></div> 
+                <li><NavLink to='/' className='m-3'>Home</NavLink></li>
             </ul>
            
 
