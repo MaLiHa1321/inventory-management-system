@@ -61,7 +61,7 @@ const Sidebar = () => {
           {/* Nav Items */}
             <ul>
                 <li><NavLink to='/dashboard/userHome' className='m-3'>Home</NavLink></li>
-                <li><NavLink to='/dashboard/addProduct'>Add Product</NavLink></li>
+                <li><NavLink to='/dashboard/addProductbtn'>Add Product</NavLink></li>
             </ul>
            
 

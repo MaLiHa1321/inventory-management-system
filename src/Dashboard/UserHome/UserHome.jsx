@@ -16,7 +16,7 @@ const UserHome = () => {
     },[axiosSecure])
     return (
         <div>
-          
+          <h2>Hi Welcome {user?.displayName}</h2>
             
         </div>
     );

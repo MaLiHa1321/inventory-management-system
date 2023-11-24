@@ -11,6 +11,7 @@ import CreateShop from "../Pages/CreateShop/CreateShop";
 import Dashboard from "../Layout/Dashboard";
 import UserHome from "../Dashboard/UserHome/UserHome";
 import AddProduct from "../Dashboard/AddProduct/AddProduct";
+import AddProductbtn from "../Dashboard/AddProduct/AddProductbtn";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -46,6 +47,10 @@ import AddProduct from "../Dashboard/AddProduct/AddProduct";
         {
           path: 'userHome',
           element: <UserHome></UserHome>
+        },
+        {
+          path: 'addProductbtn',
+          element: <AddProductbtn></AddProductbtn>
         },
         {
           path: 'addProduct',
