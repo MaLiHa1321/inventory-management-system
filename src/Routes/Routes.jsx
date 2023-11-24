@@ -8,6 +8,9 @@ import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoutes";
 import CreateShop from "../Pages/CreateShop/CreateShop";
+import Dashboard from "../Layout/Dashboard";
+import UserHome from "../Dashboard/UserHome/UserHome";
+import AddProduct from "../Dashboard/AddProduct/AddProduct";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -35,6 +38,21 @@ import CreateShop from "../Pages/CreateShop/CreateShop";
         }
       ]
     },
+    {
+       path: 'dashboard',
+       element: <Dashboard></Dashboard>,
+       children: 
+       [
+        {
+          path: 'userHome',
+          element: <UserHome></UserHome>
+        },
+        {
+          path: 'addProduct',
+          element: <AddProduct></AddProduct>
+        }
+       ]
+    }
   ]);
 
   export default router;

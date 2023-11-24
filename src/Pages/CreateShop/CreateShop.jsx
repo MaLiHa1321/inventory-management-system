@@ -13,7 +13,7 @@ const CreateShop = () => {
                 e.preventDefault();
                 const form = e.target;
                 const shopName = form.name.value;
-                const ownerEmail = form.email.value;
+                const email = form.email.value;
                 const ownerName = form.ownerName.value;
                 const location = form.location.value;
                 const info = form.des.value;
@@ -21,7 +21,7 @@ const CreateShop = () => {
                 const imageData = await imageUpload(image)
                 const photo = imageData?.data?.display_url;
 
-                const shopInformation = {shopName,ownerEmail,ownerName,location,info,photo}
+                const shopInformation = {shopName,email,ownerName,location,info,photo}
                 axiosSecure.post('/shop', shopInformation)
                 .then(res =>{
                     console.log(res.data)

@@ -8,7 +8,11 @@ const Navbar = () => {
     <NavLink to='/'  className='mr-3 text-2xl'>Home</NavLink>
     <NavLink to='/login' className='mr-3 text-2xl'>Login</NavLink>
     <NavLink to='/register' className='mr-3 text-2xl'>Register</NavLink>
-    <NavLink to='/createShop' className='mr-3 text-2xl'>Create Shop</NavLink>
+    
+    {
+      user ?  <NavLink to='/dashboard/userHome' className='mr-3 text-2xl'>Dashboard</NavLink> :
+      <NavLink to='/createShop' className='mr-3 text-2xl'>Create Shop</NavLink>
+    }
     <NavLink to='https://youtu.be/gDUzaANQ01A' target="_blank" rel="noopener noreferrer" className='mr-3 text-2xl'>Watch Demo</NavLink>
     </>
     return (
