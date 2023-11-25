@@ -24,12 +24,12 @@ const AddProduct = () => {
         e.preventDefault()
         const form = e.target;
         const productName = form.name.value;
-        const quantity = form.quantity.value;
+        const quantity = parseInt(form.quantity.value);
         const productCost = parseFloat(form.cost.value);
         const profit = parseFloat(form.profit.value);
         const discount = form.discount.value;
         const location = form.location.value;
-        const sales = form.sales.value;
+        const sales = parseInt(form.sales.value);
         const info = form.des.value;
         const tax = 0.075;
         const sellingPrice = productCost + productCost * tax + productCost * (profit / 100).toFixed(2);
