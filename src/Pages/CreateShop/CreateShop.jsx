@@ -1,4 +1,4 @@
-import { Toaster } from "react-hot-toast";
+
 import useAuth from "../../hook/useAuth";
 import { imageUpload } from "../../api/utilis";
 import useAxios from "../../hook/useAxios";
@@ -30,8 +30,17 @@ const CreateShop = () => {
                 axiosSecure.post('/shop', shopInformation)
                 .then(res =>{
                   console.log(res.data)
-                  if(res.data && res.data.insertedId > 0){
-                    
+                })
+                .catch((err) =>{
+                    console.log(err)
+                })
+
+               
+
+            
+                axiosSecure.patch(`/users/manager/${user?.email}`)
+                .then(res =>{
+                   if(res.data.mofifiedCount > 0){
                     Swal.fire({
                       position: "top-end",
                       icon: "success",
@@ -39,11 +48,10 @@ const CreateShop = () => {
                       showConfirmButton: false,
                       timer: 1500
                     });
-                  }
+                  
+                   }
                 })
-                .catch((err) =>{
-                    console.log(err)
-                })
+                .catch(err => console.log(err))
               
                
               
@@ -51,10 +59,7 @@ const CreateShop = () => {
             }
             return (
                 <div>
-                       <Toaster
-                position="top-right"
-                reverseOrder={false}
-              />
+                    
                     <h2>Create a shop</h2>
                      <div>
                         <form onSubmit={handleAddShop} >

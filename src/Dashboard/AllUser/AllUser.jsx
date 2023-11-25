@@ -16,22 +16,22 @@ const AllUser = () => {
         }
     })
 console.log(users)
-const handleRole = user =>{
-    axios.patch(`/users/manager/${user._id}`)
-    .then(res =>{
-        console.log(res.data)
-        if(res.data.modifiedCount > 0){
-            refetch()
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: `${user.name} is now Shop manager`,
-                showConfirmButton: false,
-                timer: 1500
-              });
-        }
-    })
-}
+// const handleRole = user =>{
+//     axios.patch(`/users/manager/${user._id}`)
+//     .then(res =>{
+//         console.log(res.data)
+//         if(res.data.modifiedCount > 0){
+//             refetch()
+//             Swal.fire({
+//                 position: "top-end",
+//                 icon: "success",
+//                 title: `${user.name} is now Shop manager`,
+//                 showConfirmButton: false,
+//                 timer: 1500
+//               });
+//         }
+//     })
+// }
     return (
         <div>
             <div className='flex justify-evenly my-4 '>
@@ -60,14 +60,11 @@ const handleRole = user =>{
         <th>{idx + 1}</th>
         <td>{user?.name}</td>
         <td>{user?.email}</td>
+        <td>{user?.role}</td>
         <td>
         {
-  user?.role === 'admin'
-    ? 'Admin'
-    : user?.role === 'shop-manager'
-    ? 'Shop Manager'
-    : 
-    <button onClick={() => handleRole(user)}><AiOutlineUser /></button>
+
+  
 }
            
         </td>
