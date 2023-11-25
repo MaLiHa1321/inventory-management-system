@@ -46,7 +46,10 @@ const Navbar = () => {
             {navLinks}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a className="btn btn-ghost hidden md:block flex-row">
+            <img src="https://i.ibb.co/1bcS3Q7/0e39d6e075f2a49e82b4489650bdb0f3.jpg" className='w-[30px] h-[30px] rounded-full' alt="" />
+            <h2 className='text-xl text-green-600 font-bold'> InventTech</h2>
+            </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -55,7 +58,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
         {
-    user?.email ?  <div className="navbar-end flex flex-col lg:flex-row">
+    user?.email ?  <div className="navbar-end flex lg:flex-row">
       <img className='w-[40px] h-[40px] rounded-full' src={user?.photoURL} alt="" />
       <p>{user.displayName}</p>
     <a onClick={logOutUser} className="btn">Logout</a>
