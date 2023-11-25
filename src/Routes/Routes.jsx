@@ -14,6 +14,12 @@ import AddProduct from "../Dashboard/AddProduct/AddProduct";
 import AddProductbtn from "../Dashboard/AddProduct/AddProductbtn";
 import ProductDetails from "../Dashboard/ProductDetalis/ProductDetails";
 import UpdateProduct from "../Dashboard/UpdateProduct/UpdateProduct";
+import AllUser from "../Dashboard/AllUser/AllUser";
+import AdminRoute from "../PrivateRoute/AdminRoute";
+import SalesCollection from "../Dashboard/SalesCollection/SalesCollection";
+import AllShop from "../Dashboard/AllShop/AllShop";
+import AdminAllProduct from "../Dashboard/AdminAllProduct/AdminAllProduct";
+import AddToCart from "../Dashboard/AddToCart/AddToCart";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -63,9 +69,40 @@ import UpdateProduct from "../Dashboard/UpdateProduct/UpdateProduct";
           element: <ProductDetails></ProductDetails>
         },
         {
+          path: 'salesCollection',
+          element: <SalesCollection></SalesCollection>
+        },
+        {
+          path: 'addToCart',
+          element: <AddToCart></AddToCart>
+        },
+        {
           path: 'updateProduct/:id',
           element: <UpdateProduct></UpdateProduct>,
           loader: ({params}) => fetch(`http://localhost:5000/product/${params.id}`)
+        },
+
+        // admin Routes
+        {
+          path: 'allUser',
+          element: <AdminRoute>
+
+            <AllUser></AllUser>
+          </AdminRoute>
+        },
+        {
+          path: 'allShop',
+          element: <AdminRoute>
+
+            <AllShop></AllShop>
+          </AdminRoute>
+        },
+        {
+          path: 'AdminAllProduct',
+          element: <AdminRoute>
+
+            <AdminAllProduct></AdminAllProduct>
+          </AdminRoute>
         },
        ]
     }

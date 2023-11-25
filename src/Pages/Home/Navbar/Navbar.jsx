@@ -1,18 +1,38 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../../hook/useAuth';
+import { useQuery } from '@tanstack/react-query';
+import useAxios from '../../../hook/useAxios';
 
 const Navbar = () => {
     const {user, logOutUser } = useAuth()
+    const axiosSecure = useAxios()
+     
+    // get the product data for user
+    const { data: shop=[]} = useQuery({
+      queryKey:  ['shop', user?.email],
+      queryFn: async ()=>{
+        const res = await axiosSecure.get(`/shop?email=${user?.email}`)
+        return  res.data;
+      }
+    
+  })
+ 
     const navLinks =<>
     <NavLink to='/'  className='mr-3 text-2xl'>Home</NavLink>
     <NavLink to='/login' className='mr-3 text-2xl'>Login</NavLink>
     <NavLink to='/register' className='mr-3 text-2xl'>Register</NavLink>
+   
     
-    {
-      user ?  <NavLink to='/dashboard/userHome' className='mr-3 text-2xl'>Dashboard</NavLink> :
-      <NavLink to='/createShop' className='mr-3 text-2xl'>Create Shop</NavLink>
-    }
+    {shop.length > 0 ? (
+      <NavLink to='/dashboard/userHome' className='mr-3 text-2xl'>
+        Dashboard
+      </NavLink>
+    ) : (
+      <NavLink to='/createShop' className='mr-3 text-2xl'>
+        Create Shop
+      </NavLink>
+    )}
     <NavLink to='https://youtu.be/gDUzaANQ01A' target="_blank" rel="noopener noreferrer" className='mr-3 text-2xl'>Watch Demo</NavLink>
     </>
     return (

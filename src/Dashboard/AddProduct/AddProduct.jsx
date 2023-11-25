@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../hook/useAuth';
 import useAxios from '../../hook/useAxios';
 import { imageUpload } from '../../api/utilis';
+import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 const AddProduct = () => {
     const {user} = useAuth()
@@ -46,11 +48,13 @@ const AddProduct = () => {
       
 
         if (userProductCount < 3){
-                const response = await axiosSecure.post('/product', productaddInfo);
-                console.log(response.data); 
+                const res = await axiosSecure.post('/product', productaddInfo);
+
+                console.log(res.data)
+                Swal.fire("Product Added successfully!");
         }
         else{
-           alert('User product limit exceeded')
+          Swal.fire('User product limit exceeded')
            return;
         }
     
@@ -72,19 +76,19 @@ const AddProduct = () => {
                   <label className="label">
                     <span className="label-text">Product Quantity</span>
                   </label>
-                  <input type="number" placeholder="Product Quantity" name="quantity" className="input input-bordered" required />
+                  <input type="number" placeholder="Product Quantity" name="quantity" min='0' className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Production Cost </span>
                   </label>
-                  <input type="number" placeholder="Production cost" name="cost" className="input input-bordered" required />
+                  <input type="number" placeholder="Production cost" name="cost" min='0' className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Profit Margin</span>
                   </label>
-                  <input type="number" placeholder="Profit margin" name="profit" className="input input-bordered" required />
+                  <input type="number" placeholder="Profit margin" name="profit" min='0' className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                   <label className="label">
@@ -96,13 +100,13 @@ const AddProduct = () => {
                   <label className="label">
                     <span className="label-text">Product Discount</span>
                   </label>
-                  <input type="number" placeholder="Product Discount" name="discount" className="input input-bordered" required />
+                  <input type="number" placeholder="Product Discount" name="discount" min='0' className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Product sales</span>
                   </label>
-                  <input type="number" placeholder="Product sales" name="sales" className="input input-bordered" required />
+                  <input type="number" placeholder="Product sales" name="sales" min='0' className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                   <label className="label">

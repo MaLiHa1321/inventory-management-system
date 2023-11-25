@@ -5,8 +5,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import SocialLogin from './SocialLogin';
 import useAuth from '../hook/useAuth';
+import useAxiosPublic from '../hook/useAxiosPublic';
 
 const Register = () => {
+  const axiosPublic = useAxiosPublic()
     const {createUser,updateUser} = useAuth()
   
   const navigate = useNavigate()
@@ -17,7 +19,7 @@ const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email,password,name,photo)
+    // console.log(email,password,name,photo)
      // validation
      if(password.length < 6) {
         toast.error('password should have 6 letter')
@@ -36,8 +38,20 @@ const Register = () => {
         console.log(res.user)
         updateUser(name,photo)
       .then(() =>{
-        toast.success('user created successfully')
-        navigate('/')
+           // save user to the database
+           const userInfo = {
+            name: name,
+            email: email,
+          
+          }
+          axiosPublic.post('/users', userInfo )
+          .then(res =>{
+            if(res.data.insertedId){
+              toast.success('user created successfully')
+              navigate('/')
+            }
+          })
+      
       })
     })
     .catch(err => console.log(err))

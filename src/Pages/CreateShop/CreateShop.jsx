@@ -2,12 +2,16 @@ import { Toaster } from "react-hot-toast";
 import useAuth from "../../hook/useAuth";
 import { imageUpload } from "../../api/utilis";
 import useAxios from "../../hook/useAxios";
+import Swal from "sweetalert2";
+
 
 
 
 const CreateShop = () => {
+ 
     const {user} = useAuth()
     const axiosSecure = useAxios()
+  
          
             const handleAddShop = async (e) => {
                 e.preventDefault();
@@ -16,15 +20,26 @@ const CreateShop = () => {
                 const email = form.email.value;
                 const ownerName = form.ownerName.value;
                 const location = form.location.value;
+                const productLimit = 3;
                 const info = form.des.value;
                 const image = form.image.files[0];
                 const imageData = await imageUpload(image)
                 const photo = imageData?.data?.display_url;
 
-                const shopInformation = {shopName,email,ownerName,location,info,photo}
+                const shopInformation = {shopName,email,ownerName,location,info,photo, productLimit}
                 axiosSecure.post('/shop', shopInformation)
                 .then(res =>{
-                    console.log(res.data)
+                  console.log(res.data)
+                  if(res.data && res.data.insertedId > 0){
+                    
+                    Swal.fire({
+                      position: "top-end",
+                      icon: "success",
+                      title: "Your shop has been Created",
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
+                  }
                 })
                 .catch((err) =>{
                     console.log(err)
@@ -73,6 +88,7 @@ const CreateShop = () => {
                   </label>
                   <textarea placeholder="description" type="text" name='des' className="textarea textarea-bordered textarea-lg w-full" ></textarea>
                 </div>
+              
            
                 <div className="form-control">
                   <label className="label">

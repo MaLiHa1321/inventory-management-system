@@ -5,9 +5,12 @@ import useAxios from "../../hook/useAxios";
 import useAuth from "../../hook/useAuth";
 
 
+
 const Sidebar = () => {
  
     const [shop, setShop] = useState([])
+    const [isAdmin, setisAdmin] = useState(false);
+    const [loading, setLoading] = useState(true);
     const axiosSecure = useAxios()
     const {user,logOutUser} = useAuth();
     const userEmail = user?.email;
@@ -21,10 +24,31 @@ const Sidebar = () => {
     },[axiosSecure, userEmail])
     const [isActive, setActive] = useState(false)
 
+ 
+
      // Sidebar Responsive Handler
   const handleToggle = () => {
     setActive(!isActive)
   }
+
+  // for admin
+  useEffect(() => {
+    axiosSecure.get(`/users?email=${userEmail}`)
+    .then(res => {
+      setisAdmin(res.data[0].role)
+      setLoading(false);
+    })
+      .catch(error => {
+        console.error('Error fetching user role:', error);
+        setLoading(false);
+      });
+  }, [axiosSecure, userEmail]);
+
+  if (loading) {
+    return <p>Loading...</p>; 
+  }
+ 
+
 
   return (
     <>
@@ -59,14 +83,27 @@ const Sidebar = () => {
 
 
           {/* Nav Items */}
-            <ul>
-                <li><NavLink to='/dashboard/userHome' className='m-3'>UserHome</NavLink></li>
-                <li><NavLink to='/dashboard/addProductbtn'>Add Product</NavLink></li>
-                <li><NavLink to='/dashboard/allProducts'>Manage Product</NavLink></li>
-                <div className="divider"></div> 
-                <li><NavLink to='/' className='m-3'>Home</NavLink></li>
-            </ul>
-           
+          {isAdmin === 'admin'  ? (
+    <ul>
+      <li><NavLink to='/dashboard/adminHome' className='mb-3'>Admin Home</NavLink></li>
+      <li><NavLink to='/dashboard/allUser' className='m-3'>All User</NavLink></li>
+      <li><NavLink to='/dashboard/allShop' className='m-3'>All Shop</NavLink></li>
+      <li><NavLink to='/dashboard/AdminAllProduct' className='m-3'>All Product</NavLink></li>
+      <div className="divider"></div> 
+      <li><NavLink to='/' className='m-3'>Home</NavLink></li>
+    </ul>
+  ) : (
+    <ul>
+      <li><NavLink to='/dashboard/userHome' className='m-3'>UserHome</NavLink></li>
+      <li><NavLink to='/dashboard/addProductbtn'>Add Product</NavLink></li>
+      <li><NavLink to='/dashboard/allProducts'>Manage Product</NavLink></li>
+      <li><NavLink to='/dashboard/salesCollection'>Sales collection</NavLink></li>
+      <div className="divider"></div> 
+      <li><NavLink to='/' className='m-3'>Home</NavLink></li>
+    </ul>
+  )}
+
+          
 
         </div>
 

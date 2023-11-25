@@ -15,8 +15,8 @@ const ProductDetails = () => {
     const { data: products=[], isLoading,isError, refetch} = useQuery({
         queryKey:  ['products', user?.email],
         queryFn: async ()=>{
-          const res =  axiosSecure.get(`/product?email=${user?.email}`)
-          return (await res).data;
+          const res = await axiosSecure.get(`/product?email=${user?.email}`)
+          return  res.data;
         }
     }
     

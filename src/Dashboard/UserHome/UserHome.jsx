@@ -13,7 +13,7 @@ const UserHome = () => {
             setShop(res.data)
         })
         .catch(err => console.log(err))
-    },[axiosSecure])
+    },[])
     return (
         <div>
           <h2>Hi Welcome {user?.displayName}</h2>
