@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hook/useAuth";
 import useAxios from "../../hook/useAxios";
 import Swal from "sweetalert2";
+import {jsPDF} from "jspdf";
+import 'jspdf-autotable';
+
 
 
 
@@ -37,33 +40,33 @@ const AddToCart = () => {
         const date = new Date()
         cart.forEach((product) => {
             const cartInfo = { date, ...product };
-            
+            const doc = new jsPDF({orientation: 'landscape'})
+            doc.autoTable({
+                html: '#Your-CheckOut'
+            })
+            doc.save('checkOut.pdf');
             axiosSecure.patch(`/checkOut?id=${product._id}`, cartInfo)
               .then((res) => {
                 if(res.data.modifiedCount > 0){
                     Swal.fire("You've successfully checkOut");
                      setCart([]);
+                     setTotalPrice([]);
+                     setTotal([]);
+                     setDiscount([])
                 }
               })
               .catch((err) => {
                 console.log(err)
               });
           });
-    //     const date = new Date()
-    //     const cartInfo = {date, ...cart}
-    //      console.log(cartInfo)
-    //  axiosSecure.patch(`/checkOut?id=${cart._id}`, cartInfo)
-    //  .then(res => {
-    //     console.log(res.data)
-    //  })
-    //  .catch(err => console.log(err))
+  
        
     }
     return (
         <div>
             <h2>{cart.length}</h2>
             <div className="overflow-x-auto">
-  <table className="table">
+  <table className="table" id="Your-CheckOut">
     {/* head */}
     <thead>
       <tr>

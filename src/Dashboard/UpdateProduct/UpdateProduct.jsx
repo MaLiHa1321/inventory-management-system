@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 const UpdateProduct = () => {
     const loaderData = useLoaderData()
-    const AxiosSecure = useAxios()
+    const axiosSecure = useAxios()
     // console.log(Object.keys(loaderData).join(','))
       const {_id,email,photo,productName,quantity,discount,sellingPrice,info,productCost,profit,sales,location} = loaderData
     const handleUpdateProduct = async (e) =>{
@@ -25,16 +25,19 @@ const UpdateProduct = () => {
         const photo = imageData?.data?.display_url;
 
         const updateProduct = {productName,quantity,productCost,profit,location,discount,sales,info,photo}
-       const result = await AxiosSecure.patch(`/product/${_id}`, updateProduct)
-       if(result.data.modifiedCount > 0){
-        Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: `${productName} has been updateed`,
-            showConfirmButton: false,
-            timer: 1500
-          });
-       }
+        axiosSecure.patch(`/product/${_id}`, updateProduct)
+       .then(res =>{
+         if(res.data.modifiedCount > 0){
+          Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `${productName} has been updateed`,
+              showConfirmButton: false,
+              timer: 1500
+            });
+         }
+       })
+       .catch(err => console.log(err))
     }
     return (
         <div>
