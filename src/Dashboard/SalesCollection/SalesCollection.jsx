@@ -2,9 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hook/useAuth";
 import useAxios from "../../hook/useAxios";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 
 const SalesCollection = () => {
+  const [search,setSearch] = useState('');
+  const [filteredProducts, setFilteredProducts] = useState([]);
     const axiosSecure = useAxios();
     const {user} = useAuth()
 
@@ -25,9 +28,27 @@ const SalesCollection = () => {
       })
       .catch(err => console.log(err))
     }
+
+    // search functionalty
+    const handleSearch = e =>{
+      e.preventDefault();
+      const searchText = e.target.search.value.toLowerCase();
+      setSearch(searchText);
+
+      const filtered = products.filter((product) =>
+      String(product._id).toLowerCase().includes(searchText)
+    );
+
+    setFilteredProducts(filtered);
+    }
+    const displayedProducts = search.length > 0 ? filteredProducts : products;
     return (
         <div>
            <h2>{products.length}</h2> 
+           <form onSubmit={handleSearch} className="flex mb-4">
+           <input type="text" placeholder="Search here" name='search' className="input input-bordered input-primary w-full" />
+           <button className="btn btn-primary">Search</button>
+           </form>
            <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
@@ -48,7 +69,7 @@ const SalesCollection = () => {
     <tbody>
       {/* row 1 */}
       {
-        products?.map((product) =>   <tr key={product._id}>
+        displayedProducts?.map((product) =>   <tr key={product._id}>
             <th>
              {product._id}
             </th>

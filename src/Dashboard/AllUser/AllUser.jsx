@@ -61,14 +61,8 @@ console.log(users)
         <td>{user?.name}</td>
         <td>{user?.email}</td>
         <td>{user?.role}</td>
-        <td>
-        {
-
-  
-}
-           
-        </td>
-        <td>ShopName</td>
+        <td>{user?.shopInfo?.shopName}</td>
+       
       </tr> )
       }
     

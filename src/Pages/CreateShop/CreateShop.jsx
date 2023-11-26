@@ -35,10 +35,10 @@ const CreateShop = () => {
                     console.log(err)
                 })
 
-               
+               const shopInfo ={shopName, photo}
 
             
-                axiosSecure.patch(`/users/manager/${user?.email}`)
+                axiosSecure.patch(`/users/manager/${user?.email}`,shopInfo)
                 .then(res =>{
                    if(res.data.mofifiedCount > 0){
                     Swal.fire({
