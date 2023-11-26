@@ -98,6 +98,7 @@ const Sidebar = () => {
       <li><NavLink to='/dashboard/addProductbtn'>Add Product</NavLink></li>
       <li><NavLink to='/dashboard/allProducts'>Manage Product</NavLink></li>
       <li><NavLink to='/dashboard/salesCollection'>Sales collection</NavLink></li>
+      <li><NavLink to='/dashboard/payment'>Subscription & payment</NavLink></li>
       <div className="divider"></div> 
       <li><NavLink to='/' className='m-3'>Home</NavLink></li>
     </ul>

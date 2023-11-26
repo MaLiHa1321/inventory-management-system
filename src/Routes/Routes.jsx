@@ -20,6 +20,7 @@ import SalesCollection from "../Dashboard/SalesCollection/SalesCollection";
 import AllShop from "../Dashboard/AllShop/AllShop";
 import AdminAllProduct from "../Dashboard/AdminAllProduct/AdminAllProduct";
 import AddToCart from "../Dashboard/AddToCart/AddToCart";
+import Payment from "../Dashboard/Payment/Payment";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -75,6 +76,10 @@ import AddToCart from "../Dashboard/AddToCart/AddToCart";
         {
           path: 'addToCart',
           element: <AddToCart></AddToCart>
+        },
+        {
+          path: 'payment',
+          element: <Payment></Payment>
         },
         {
           path: 'updateProduct/:id',

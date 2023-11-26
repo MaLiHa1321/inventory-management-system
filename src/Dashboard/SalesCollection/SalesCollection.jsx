@@ -3,6 +3,8 @@ import useAuth from "../../hook/useAuth";
 import useAxios from "../../hook/useAxios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 
 const SalesCollection = () => {
@@ -24,7 +26,9 @@ const SalesCollection = () => {
     const handleCart =(product) =>{
       axiosSecure.post('/cart', product)
       .then(res =>{
-        console.log(res.data)
+        if(res.data.insertedId > 0){
+          Swal.fire("Added successfully!");
+        }
       })
       .catch(err => console.log(err))
     }
@@ -90,11 +94,11 @@ const SalesCollection = () => {
             <td>{product?.quantity}</td>
             <td>{product?.discount} %</td>
             <td>$ {product?.sellingPrice}</td>
-             <Link to='/dashboard/addToCart'>
+           
             <th>
-              <button onClick={() => handleCart(product)} className="btn btn-success">Add for check Out</button>
+              <button onClick={() => handleCart(product)} className="btn "><AiOutlineShoppingCart></AiOutlineShoppingCart></button>
             </th>
-             </Link>
+          
        </tr>)
       }
     
@@ -103,6 +107,9 @@ const SalesCollection = () => {
     
   </table>
 </div>
+<Link to='/dashboard/addToCart'> 
+<button className="btn btn-primary">Go for CheckOut</button>
+  </Link>
         </div>
     );
 };
