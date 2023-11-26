@@ -21,6 +21,7 @@ import AllShop from "../Dashboard/AllShop/AllShop";
 import AdminAllProduct from "../Dashboard/AdminAllProduct/AdminAllProduct";
 import AddToCart from "../Dashboard/AddToCart/AddToCart";
 import Payment from "../Dashboard/Payment/Payment";
+import Paymethod from "../Dashboard/Paymethod/Paymethod";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -85,6 +86,11 @@ import Payment from "../Dashboard/Payment/Payment";
           path: 'updateProduct/:id',
           element: <UpdateProduct></UpdateProduct>,
           loader: ({params}) => fetch(`http://localhost:5000/product/${params.id}`)
+        },
+        {
+          path: 'paymethod/:id',
+          element: <Paymethod></Paymethod>,
+          loader: ({params}) => fetch(`http://localhost:5000/premium/${params.id}`)
         },
 
         // admin Routes
