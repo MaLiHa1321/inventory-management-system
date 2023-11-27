@@ -5,24 +5,30 @@ import Sidebar from '../Dashboard/SideBar/Sidebar';
 
 const Dashboard = () => {
     return (
+      <div>
+        <div>
+
         <div className='relative min-h-screen md:flex'>
         {/* Sidebar Component */}
+
+
         <Sidebar></Sidebar>
-        <ul>
-            <li><NavLink to='/dashboard/home'>Home</NavLink></li>
-        </ul>
-        <div className='flex-1  md:ml-64'>
+      
+        <div className='flex-1 md:ml-64'>
           <div className='p-5'>
-            {/* Outlet for dynamic contents */}
             <Outlet />
           </div>
-          <div className='mt-32'>
-
-          <Footer></Footer>
-          </div>
+        
         </div>
       
          
+      </div>
+        </div>
+      
+  <div className='md:ml-64' >
+
+<Footer></Footer>
+</div>
       </div>
     );
 };

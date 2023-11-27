@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../../hook/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import useAxios from '../../../hook/useAxios';
+import './Navbar.css'
 
 const Navbar = () => {
     const {user, logOutUser } = useAuth()

@@ -7,12 +7,13 @@ const AdminAllProduct = () => {
     useEffect(()=>{
         axiospublic.get('/product/all')
         .then(res =>{
-            console.log(res.data)
+            setProducts(res.data)
         })
         
     },[axiospublic])
     return (
         <div>
+            
             
         </div>
     );

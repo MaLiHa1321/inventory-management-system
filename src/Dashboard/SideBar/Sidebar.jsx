@@ -54,11 +54,11 @@ const Sidebar = () => {
     <>
       {/* Small Screen Navbar */}
       <div className='bg-gray-100 text-gray-800 flex justify-between md:hidden'>
-        <div>
+        {/* <div>
           <div className='block cursor-pointer p-4 font-bold'>
         
           </div>
-        </div>
+        </div> */}
 
         <button
           onClick={handleToggle}
@@ -70,13 +70,13 @@ const Sidebar = () => {
 
           {/* Sidebar */}
           <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-green-200 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && '-translate-x-full'
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
-        <div>
+        <div className="m-12 space-y-7">
           <div>
-            <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center mx-auto'>
+            <div className='w-full hidden md:flex px-4 py-2 rounded-lg justify-center items-center mx-auto'>
             <img src={shop.length > 0 ? shop[0].photo : ''} alt="" className="w-[50px]" />
             </div>
           </div>
@@ -84,23 +84,23 @@ const Sidebar = () => {
 
           {/* Nav Items */}
           {isAdmin === 'admin'  ? (
-    <ul>
-      <li><NavLink to='/dashboard/adminHome' className='mb-3'>Admin Home</NavLink></li>
-      <li><NavLink to='/dashboard/allUser' className='m-3'>All User</NavLink></li>
-      <li><NavLink to='/dashboard/allShop' className='m-3'>All Shop</NavLink></li>
-      <li><NavLink to='/dashboard/AdminAllProduct' className='m-3'>All Product</NavLink></li>
+    <ul >
+      <li><NavLink to='/dashboard/adminHome' className='mb-3 text-xl'>Admin Home</NavLink></li>
+      <li><NavLink to='/dashboard/allUser' className='m-3 text-xl'>All User</NavLink></li>
+      <li><NavLink to='/dashboard/allShop' className='m-3 text-xl'>All Shop</NavLink></li>
       <div className="divider"></div> 
       <li><NavLink to='/' className='m-3'>Home</NavLink></li>
     </ul>
   ) : (
     <ul>
-      <li><NavLink to='/dashboard/userHome' className='m-3'>UserHome</NavLink></li>
-      <li><NavLink to='/dashboard/addProductbtn'>Add Product</NavLink></li>
-      <li><NavLink to='/dashboard/allProducts'>Manage Product</NavLink></li>
-      <li><NavLink to='/dashboard/salesCollection'>Sales collection</NavLink></li>
-      <li><NavLink to='/dashboard/payment'>Subscription & payment</NavLink></li>
+      <li><NavLink to='/dashboard/userHome' className='p-4 text-lg font-bold '>UserHome</NavLink></li>
+      <li><NavLink to='/dashboard/addProductbtn' className='m-3'>Add Product</NavLink></li>
+      <li><NavLink to='/dashboard/allProducts' className='m-3'>Manage Product</NavLink></li>
+      <li><NavLink to='/dashboard/salesCollection' className='m-3'>Sales collection</NavLink></li>
+      <li><NavLink to='/dashboard/payment' className='m-3'>Subscription & payment</NavLink></li>
+      <li><NavLink to='/dashboard/SalesSummary' className='m-3'>Sales Summary </NavLink></li>
       <div className="divider"></div> 
-      <li><NavLink to='/' className='m-3'>Home</NavLink></li>
+      <li><NavLink to='/' className='m-3 text-xl'>Home</NavLink></li>
     </ul>
   )}
 
@@ -114,7 +114,7 @@ const Sidebar = () => {
           
           <button
            onClick={logOutUser}
-            className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
+            className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-sky-300   hover:text-gray-700 transition-colors duration-300 transform'
           >
            
 

@@ -22,6 +22,8 @@ import AdminAllProduct from "../Dashboard/AdminAllProduct/AdminAllProduct";
 import AddToCart from "../Dashboard/AddToCart/AddToCart";
 import Payment from "../Dashboard/Payment/Payment";
 import Paymethod from "../Dashboard/Paymethod/Paymethod";
+import SalesSummary from "../Dashboard/SalesSummary/SalesSummary";
+import AdminHome from "../Dashboard/AdminHome/AdminHome";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -51,36 +53,67 @@ import Paymethod from "../Dashboard/Paymethod/Paymethod";
     },
     {
        path: 'dashboard',
-       element: <Dashboard></Dashboard>,
+       element: <PrivateRoute>
+
+         <Dashboard></Dashboard>
+       </PrivateRoute>,
        children: 
        [
         {
           path: 'userHome',
-          element: <UserHome></UserHome>
+          element: <PrivateRoute>
+
+            <UserHome></UserHome>
+          </PrivateRoute>
         },
         {
           path: 'addProductbtn',
-          element: <AddProductbtn></AddProductbtn>
+          element: <PrivateRoute>
+
+            <AddProductbtn></AddProductbtn>
+          </PrivateRoute>
         },
         {
           path: 'addProduct',
-          element: <AddProduct></AddProduct>
+          element: <PrivateRoute>
+
+            <AddProduct></AddProduct>
+          </PrivateRoute>
         },
         {
           path: 'allProducts',
-          element: <ProductDetails></ProductDetails>
+          element: <PrivateRoute>
+
+            <ProductDetails></ProductDetails>
+          </PrivateRoute>
         },
         {
           path: 'salesCollection',
-          element: <SalesCollection></SalesCollection>
+          element:  <PrivateRoute>
+
+            <SalesCollection></SalesCollection>
+          </PrivateRoute>
         },
         {
           path: 'addToCart',
-          element: <AddToCart></AddToCart>
+          element: <PrivateRoute>
+
+            <AddToCart></AddToCart>
+          </PrivateRoute>
         },
         {
           path: 'payment',
-          element: <Payment></Payment>
+          element: <PrivateRoute>
+
+            <Payment></Payment>
+          </PrivateRoute>
+        },
+        {
+          path: 'SalesSummary',
+          element: <PrivateRoute>
+
+            <SalesSummary></SalesSummary>
+          </PrivateRoute>
         },
         {
           path: 'updateProduct/:id',
@@ -113,6 +146,13 @@ import Paymethod from "../Dashboard/Paymethod/Paymethod";
           element: <AdminRoute>
 
             <AdminAllProduct></AdminAllProduct>
+          </AdminRoute>
+        },
+        {
+          path: 'adminHome',
+          element: <AdminRoute>
+
+            <AdminHome></AdminHome>
           </AdminRoute>
         },
        ]
