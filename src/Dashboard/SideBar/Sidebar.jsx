@@ -54,15 +54,15 @@ const Sidebar = () => {
     <>
       {/* Small Screen Navbar */}
       <div className='bg-gray-100 text-gray-800 flex justify-between md:hidden'>
-        {/* <div>
+        <div>
           <div className='block cursor-pointer p-4 font-bold'>
         
           </div>
-        </div> */}
+        </div>
 
-        <button
+<button
           onClick={handleToggle}
-          className='mobile-menu-button p-4 focus:outline-none focus:bg-gray-200'
+          className='mobile-menu-button p-4 z-10 focus:outline-none focus:bg-gray-600 '
         >
           <AiOutlineBars className='h-5 w-5' />
         </button>
