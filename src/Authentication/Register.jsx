@@ -6,6 +6,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import SocialLogin from './SocialLogin';
 import useAuth from '../hook/useAuth';
 import useAxiosPublic from '../hook/useAxiosPublic';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
   const axiosPublic = useAxiosPublic()
@@ -61,6 +62,9 @@ const Register = () => {
  }
     return (
         <div>
+            <Helmet>
+                <title>InventTech | Sign up</title>
+            </Helmet>
                <Toaster
         position="top-right"
         reverseOrder={false}
@@ -68,34 +72,41 @@ const Register = () => {
        <div>
           <h1 className='text-3xl text-center'>Please Register</h1>
              <form onSubmit={handleRegister} className="card-body w-full mx-auto md:w-3/4 lg:w-1/2">
-        <div className="form-control">
+              <div className='flex flex-col md:flex-row gap-3'>
+
+        <div className="form-control flex-1">
           <label className="label">
             <span className="label-text">Name</span>
           </label>
           <input type="text" placeholder="name" name='name' className="input input-bordered" required />
         </div>
-        <div className="form-control">
+        <div className="form-control flex-1">
           <label className="label">
             <span className="label-text">Photo URL</span>
           </label>
           <input type="text" placeholder="photo" name='photo' className="input input-bordered" required />
         </div>
-        <div className="form-control">
+              </div>
+              <div className='flex flex-col md:flex-row gap-3'>
+
+        <div className="form-control flex-1">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
           <input type="email" placeholder="email" name='email' className="input input-bordered" required />
         </div>
-        <div className="form-control">
+        <div className="form-control flex-1">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
           <input type="password" placeholder="password" name='password' className="input input-bordered" required />
         </div>
+              </div>
         <p>Already have an account? <span className='text-blue-400'><Link to="/login">Login</Link></span></p>
-        <div className="form-control mt-6">
-          <button className="btn btn-primary">Register</button>
+        <div className="form-control mt-6 w-1/4 mx-auto">
+          <button className="btn btn-success text-white">Register</button>
         </div>
+        <div className="divider">Continue With</div>
         <div className='mt-5'>
           <SocialLogin></SocialLogin>
         </div>

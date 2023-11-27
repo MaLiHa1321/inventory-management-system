@@ -8,14 +8,14 @@ const Dashboard = () => {
       <div>
         <div>
 
-        <div className='relative min-h-screen md:flex'>
+        <div className='relative min-h-screen lg:flex'>
         {/* Sidebar Component */}
 
 
         <Sidebar></Sidebar>
       
         <div className='flex-1 md:ml-64'>
-          <div className='p-5'>
+          <div className='p-5 w-full overflow-x-hidden'>
             <Outlet />
           </div>
         

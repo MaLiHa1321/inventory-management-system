@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useAxiosPublic from '../../hook/useAxiosPublic';
 import { Link } from 'react-router-dom';
 import { AiOutlineAlipay, AiOutlineMoneyCollect } from 'react-icons/ai';
+import { Helmet } from 'react-helmet-async';
 
 const Payment = () => {
   const [card,setCard] = useState([])
@@ -16,6 +17,10 @@ const Payment = () => {
 
  
     return (
+      <>
+        <Helmet>
+                <title>InventTech | Payment</title>
+            </Helmet>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-12'>
           {
             card.map((cards, idx) => <div key={idx + 1} className="card w-full bg-base-100 border-2 border-gray-300">
@@ -35,6 +40,7 @@ const Payment = () => {
 
      
         </div>
+      </>
     );
 };
 

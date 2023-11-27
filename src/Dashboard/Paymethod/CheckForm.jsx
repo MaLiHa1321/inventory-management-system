@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hook/useAuth";
 import useAxiosPublic from "../../hook/useAxiosPublic";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const CheckForm = ({amount}) => {
     const [error,setError] = useState('');
@@ -83,6 +84,10 @@ const CheckForm = ({amount}) => {
         }
     }
     return (
+      <>
+        <Helmet>
+                <title>InventTech | Payment</title>
+            </Helmet>
        <form onSubmit={handleSubmit}>
        <CardElement
         options={{
@@ -107,6 +112,7 @@ const CheckForm = ({amount}) => {
       {transectionId && <p className="text-green-400">Your transection id is : {transectionId}</p>}
 
        </form>
+      </>
     );
 };
 

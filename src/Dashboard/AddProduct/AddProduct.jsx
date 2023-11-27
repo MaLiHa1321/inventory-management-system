@@ -4,6 +4,7 @@ import useAxios from '../../hook/useAxios';
 import { imageUpload } from '../../api/utilis';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const AddProduct = () => {
     const {user} = useAuth()
@@ -62,6 +63,9 @@ const AddProduct = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>InventTech | AddProduct</title>
+            </Helmet>
            
            <div>
              <form onSubmit={handleAddShop} >
@@ -110,7 +114,7 @@ const AddProduct = () => {
                 </div>
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">Shop Information</span>
+                    <span className="label-text">Product Information</span>
                   </label>
                   <textarea placeholder="description" type="text" name='des' className="textarea textarea-bordered textarea-lg w-full" ></textarea>
                 </div>

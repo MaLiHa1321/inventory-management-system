@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate} from 'react-router-dom';
 import SocialLogin from './SocialLogin';
 import useAuth from '../hook/useAuth';
 import toast, { Toaster } from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 
 const Login = () => {
@@ -29,6 +30,9 @@ const Login = () => {
   }
     return (
         <div>
+            <Helmet>
+                <title>InventTech | Login</title>
+            </Helmet>
                    <Toaster
         position="top-right"
         reverseOrder={false}
@@ -49,9 +53,10 @@ const Login = () => {
           <input type="password" placeholder="password" name='password' className="input input-bordered" required />
         </div>
         <p>Don't have an account? <span className='text-blue-400'><Link to="/register">Register</Link></span></p>
-        <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
+        <div className="form-control mt-6 w-1/4 mx-auto">
+          <button className="btn btn-success text-white">Login</button>
         </div>
+        <div className="divider">Continue With</div>
         <div className='mt-5'>
           <SocialLogin></SocialLogin>
         </div>

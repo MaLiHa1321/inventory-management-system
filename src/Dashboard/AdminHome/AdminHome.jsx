@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAxiosPublic from '../../hook/useAxiosPublic';
 import { AiOutlineAlipayCircle, AiOutlineAreaChart, AiOutlineBarChart } from 'react-icons/ai';
+import { Helmet } from 'react-helmet-async';
 
 const AdminHome = () => {
     const [adminSale,setAdminSale] = useState({})
@@ -15,6 +16,9 @@ const AdminHome = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>InventTech | AdminHome</title>
+            </Helmet>
             <h2 className='text-2xl font-bold'>Welcome Home <span className='text-sky-600'> Admin!</span></h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         <div className="card w-full bg-base-100 shadow-xl">

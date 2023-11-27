@@ -4,6 +4,7 @@ import useAxios from "../../hook/useAxios";
 import Swal from "sweetalert2";
 import {jsPDF} from "jspdf";
 import 'jspdf-autotable';
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -64,6 +65,9 @@ const AddToCart = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>InventTech | AddTocart</title>
+            </Helmet>
             <h2>{cart.length}</h2>
             <div className="overflow-x-auto">
   <table className="table" id="Your-CheckOut">

@@ -28,7 +28,7 @@ const Banner = () => {
       >
         <SwiperSlide>
         <div className="flex items-center justify-center h-full relative">
-            <img src="https://i.ibb.co/9p7Xdry/pexels-rafael-cosquiere-2041540.jpg" alt="" className='w-full h-full object-cover' />
+            <img src="https://i.ibb.co/8rtrbV0/invent.jpg" alt="" className='w-full h-full object-cover' />
             <div className="absolute inset-0 bg-black opacity-50"></div>
             <div className="absolute text-white text-center space-y-8">
               <h2 className="text-xl md:text-5xl font-bold">Inventory management software <br /> for growing businesses</h2>
@@ -38,7 +38,7 @@ const Banner = () => {
         </SwiperSlide>
         <SwiperSlide>
         <div className="flex items-center justify-center h-full relative">
-            <img src="https://i.ibb.co/9p7Xdry/pexels-rafael-cosquiere-2041540.jpg" alt="" className='w-full h-full object-cover' />
+            <img src="https://i.ibb.co/5Rsd2Yz/invent2.jpg" alt="" className='w-full h-full object-cover' />
             <div className="absolute inset-0 bg-black opacity-50"></div>
             <div className="absolute text-white text-center space-y-8">
               <h2 className="text-xl md:text-5xl font-bold">Inventory management software <br /> for growing businesses</h2>
@@ -48,7 +48,7 @@ const Banner = () => {
         </SwiperSlide>
         <SwiperSlide>
         <div className="flex items-center justify-center h-full relative">
-            <img src="https://i.ibb.co/9p7Xdry/pexels-rafael-cosquiere-2041540.jpg" alt="" className='w-full h-full object-cover' />
+            <img src="https://i.ibb.co/T2h8ZCP/invent3.jpg" alt="" className='w-full h-full object-cover' />
             <div className="absolute inset-0 bg-black opacity-50"></div>
             <div className="absolute text-white text-center space-y-8">
               <h2 className="text-xl md:text-5xl font-bold">Inventory management software <br /> for growing businesses</h2>

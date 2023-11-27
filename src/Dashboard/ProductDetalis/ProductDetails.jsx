@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const ProductDetails = () => {
@@ -63,6 +64,9 @@ const ProductDetails = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>InventTech | Product</title>
+            </Helmet>
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}

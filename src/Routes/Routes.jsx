@@ -118,12 +118,12 @@ import AdminHome from "../Dashboard/AdminHome/AdminHome";
         {
           path: 'updateProduct/:id',
           element: <UpdateProduct></UpdateProduct>,
-          loader: ({params}) => fetch(`http://localhost:5000/product/${params.id}`)
+          loader: ({params}) => fetch(`https://inventory-server-rho.vercel.app/product/${params.id}`)
         },
         {
           path: 'paymethod/:id',
           element: <Paymethod></Paymethod>,
-          loader: ({params}) => fetch(`http://localhost:5000/premium/${params.id}`)
+          loader: ({params}) => fetch(`https://inventory-server-rho.vercel.app/premium/${params.id}`)
         },
 
         // admin Routes
@@ -142,7 +142,7 @@ import AdminHome from "../Dashboard/AdminHome/AdminHome";
           </AdminRoute>
         },
         {
-          path: 'AdminAllProduct',
+          path: 'allProduct',
           element: <AdminRoute>
 
             <AdminAllProduct></AdminAllProduct>

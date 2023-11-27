@@ -3,6 +3,7 @@ import useAuth from "../../hook/useAuth";
 import { imageUpload } from "../../api/utilis";
 import useAxios from "../../hook/useAxios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -11,6 +12,7 @@ const CreateShop = () => {
  
     const {user} = useAuth()
     const axiosSecure = useAxios()
+    const navigate= useNavigate();
   
          
             const handleAddShop = async (e) => {
@@ -40,15 +42,11 @@ const CreateShop = () => {
             
                 axiosSecure.patch(`/users/manager/${user?.email}`,shopInfo)
                 .then(res =>{
-                   if(res.data.mofifiedCount > 0){
-                    Swal.fire({
-                      position: "top-end",
-                      icon: "success",
-                      title: "Your shop has been Created",
-                      showConfirmButton: false,
-                      timer: 1500
-                    });
-                  
+                   if(res.data?.mofifiedCount > 0){
+                    Swal.fire("Congress! You've Successfully created your shop.");
+                    navigate('/dashboard')
+                    window.location.reload();
+
                    }
                 })
                 .catch(err => console.log(err))
@@ -60,33 +58,39 @@ const CreateShop = () => {
             return (
                 <div>
                     
-                    <h2>Create a shop</h2>
+                    <h2 className="text-2xl font-bold">Create a shop</h2>
                      <div>
                         <form onSubmit={handleAddShop} >
-                <div className="form-control">
+                          <div className="flex flex-col md:flex-row gap-3">
+
+                <div className="form-control flex-1">
                   <label className="label">
                     <span className="label-text"> Shop Name</span>
                   </label>
                   <input type="text" placeholder="name" name="name" className="input input-bordered" required />
                 </div>
-                <div className="form-control">
+                <div className="form-control flex-1">
                   <label className="label">
                     <span className="label-text">Shop Owner Email</span>
                   </label>
                   <input type="text" placeholder="Email"  name="email" defaultValue={user?.email} className="input input-bordered" required />
                 </div>
-                <div className="form-control">
+                          </div>
+                          <div className="flex flex-col md:flex-row gap-3">
+
+                <div className="form-control flex-1">
                   <label className="label">
                     <span className="label-text">Shop Owner Name</span>
                   </label>
                   <input type="text" placeholder="Owner Name" name="ownerName" defaultValue={user?.displayName} className="input input-bordered" required />
                 </div>
-                <div className="form-control">
+                <div className="form-control flex-1">
                   <label className="label">
                     <span className="label-text">Shop location</span>
                   </label>
                   <input type="text" placeholder="Shop Location" name="location" className="input input-bordered" required />
                 </div>
+                          </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Shop Information</span>
@@ -101,8 +105,8 @@ const CreateShop = () => {
                   </label>
                   <input type="file" id="image" name="image"  className="file-input file-input-bordered file-input-primary w-full max-w-xs" />
                 </div>
-                <div className="form-control m-6">
-                  <button className="btn btn-primary">Add Shop</button>
+                <div className="form-control m-6 w-1/4 mx-auto">
+                  <button className="btn btn-success text-white">Add Shop</button>
                 </div>
                 
                         </form>

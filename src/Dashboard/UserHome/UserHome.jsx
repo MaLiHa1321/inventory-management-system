@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAxios from '../../hook/useAxios';
 import useAuth from '../../hook/useAuth';
+import { Helmet } from 'react-helmet-async';
 
 const UserHome = () => {
     const [shop, setShop] = useState([])
@@ -16,7 +17,11 @@ const UserHome = () => {
     },[])
     return (
         <div>
+              <Helmet>
+                <title>InventTech | User Home</title>
+            </Helmet>
           <h2>Hi Welcome {user?.displayName}</h2>
+          
             
         </div>
     );

@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../provider/AuthProvider';
+
 import { useLocation, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import useAxiosPublic from '../hook/useAxiosPublic';
+import useAuth from '../hook/useAuth';
+import { AiOutlineGoogle } from 'react-icons/ai';
 
 
 const SocialLogin = () => {
-    const {user, googleSignIn} = useContext(AuthContext)
+    const {user, googleSignIn} = useAuth()
     const navigate = useNavigate()
     const location = useLocation();
     const axiosPublic = useAxiosPublic()
@@ -37,7 +38,7 @@ const SocialLogin = () => {
       />
             <div onClick={() => handleSocialLogin(googleSignIn)} >
 
-            <button className='btn btn-success text-white'>Google</button>
+            <button className='btn btn-primary text-2xl'><AiOutlineGoogle></AiOutlineGoogle></button>
             </div>
             
         </div>

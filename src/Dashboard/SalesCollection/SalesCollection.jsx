@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const SalesCollection = () => {
@@ -48,6 +49,9 @@ const SalesCollection = () => {
     const displayedProducts = search.length > 0 ? filteredProducts : products;
     return (
         <div>
+            <Helmet>
+                <title>InventTech | Sales Collection</title>
+            </Helmet>
            <h2>{products.length}</h2> 
            <form onSubmit={handleSearch} className="flex mb-4">
            <input type="text" placeholder="Search here" name='search' className="input input-bordered input-primary w-full" />

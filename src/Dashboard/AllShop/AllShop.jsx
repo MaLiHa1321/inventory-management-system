@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAxiosPublic from '../../hook/useAxiosPublic';
+import { Helmet } from 'react-helmet-async';
 
 
 const AllShop = () => {
@@ -8,7 +9,6 @@ const AllShop = () => {
     useEffect(()=>{
         axiospublic.get('/shop/all')
         .then(res =>{
-            console.log(res.data)
             setAllShop(res.data)
         })
         .catch(err => console.log(err))
@@ -16,6 +16,9 @@ const AllShop = () => {
     
     return (
         <div>
+            <Helmet>
+                <title>InventTech | AllShop</title>
+            </Helmet>
             <h2>{allShop.length}</h2>
             <div className="overflow-x-auto">
   <table className="table">

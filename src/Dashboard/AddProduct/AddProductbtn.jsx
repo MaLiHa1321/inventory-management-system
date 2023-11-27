@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import useAxios from "../../hook/useAxios";
 import useAuth from "../../hook/useAuth";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 
 
 const AddProductbtn = () => {
@@ -17,6 +18,9 @@ const AddProductbtn = () => {
     })
     return (
         <>
+          <Helmet>
+                <title>InventTech | AddProduct</title>
+            </Helmet>
         {
             products?.length > 0 ? (<div className='flex'>
             <div>

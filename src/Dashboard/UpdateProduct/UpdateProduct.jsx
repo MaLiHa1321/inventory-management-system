@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import { imageUpload } from '../../api/utilis';
 import useAxios from '../../hook/useAxios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateProduct = () => {
     const loaderData = useLoaderData()
@@ -41,6 +42,9 @@ const UpdateProduct = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>InventTech | Update Product</title>
+            </Helmet>
                 <form onSubmit={handleUpdateProduct} >
                 <div className="form-control">
                   <label className="label">
