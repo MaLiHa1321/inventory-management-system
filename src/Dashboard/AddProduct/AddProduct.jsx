@@ -49,10 +49,15 @@ const AddProduct = () => {
       
 
         if (userProductCount < 3){
-                const res = await axiosSecure.post('/product', productaddInfo);
-
+               await axiosSecure.post('/product', productaddInfo)
+               .then(res =>{
+                if(res.data.insertedId)
                 console.log(res.data)
                 Swal.fire("Product Added successfully!");
+
+               })
+
+              
         }
         else{
           Swal.fire('User product limit exceeded')
@@ -110,7 +115,7 @@ const AddProduct = () => {
                   <label className="label">
                     <span className="label-text">Product sales</span>
                   </label>
-                  <input type="number" placeholder="Product sales" name="sales" min='0' className="input input-bordered" required />
+                  <input type="number" placeholder="Product sales" name="sales" min='0' defaultValue={0} readOnly className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                   <label className="label">
@@ -126,7 +131,7 @@ const AddProduct = () => {
                   <input type="file" id="image" name="image"  className="file-input file-input-bordered file-input-primary w-full max-w-xs" />
                 </div>
                 <div className="form-control m-6">
-                  <button className="btn btn-primary">Add Product</button>
+                  <button className="btn btn-success text-white">Add Product</button>
                 </div>
                 
                         </form>

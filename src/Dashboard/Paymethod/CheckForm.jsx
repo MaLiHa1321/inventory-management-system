@@ -77,7 +77,7 @@ const CheckForm = ({amount}) => {
 
                 const res = await axios.post('/payment', payment)
 
-                if(res.data?.paymentResult?.insertedId){
+                if(res.data?.insertedId){
                     Swal.fire("Payment successfull");   
                 }
             }

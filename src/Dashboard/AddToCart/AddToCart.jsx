@@ -46,7 +46,7 @@ const AddToCart = () => {
                 html: '#Your-CheckOut'
             })
             doc.save('checkOut.pdf');
-            axiosSecure.patch(`/checkOut?id=${product._id}`, cartInfo)
+            axiosSecure.patch(`/checkOut/${product._id}`, cartInfo)
               .then((res) => {
                 if(res.data.modifiedCount > 0){
                     Swal.fire("You've successfully checkOut");

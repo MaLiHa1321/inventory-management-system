@@ -42,10 +42,11 @@ const CreateShop = () => {
             
                 axiosSecure.patch(`/users/manager/${user?.email}`,shopInfo)
                 .then(res =>{
-                   if(res.data?.mofifiedCount > 0){
+                  console.log(res.data)
+                   if(res.data?.modifiedCount > 0){
                     Swal.fire("Congress! You've Successfully created your shop.");
                     navigate('/dashboard')
-                    window.location.reload();
+                    // window.location.reload();
 
                    }
                 })

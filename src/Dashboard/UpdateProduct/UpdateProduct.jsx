@@ -103,7 +103,7 @@ const UpdateProduct = () => {
                   <input type="file" id="image" name="image"   className="file-input file-input-bordered file-input-primary w-full max-w-xs" />
                 </div>
                 <div className="form-control m-6">
-                  <button className="btn btn-primary">Update Product</button>
+                  <button className="btn btn-success text-white">Update Product</button>
                 </div>
                 
                         </form>

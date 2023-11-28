@@ -19,6 +19,7 @@ const SalesSummary = () => {
         })
         .catch(err => console.log(err))
     },[])
+   
     return (
         <div>
             <Helmet>
@@ -28,13 +29,13 @@ const SalesSummary = () => {
         <div className="card w-78 bg-base-100 shadow-xl">
           <div className="card-body">
              <h2 className="text-5xl text-center"><AiOutlineAreaChart></AiOutlineAreaChart></h2>
-            <p className="text-xl font-bold">Total Sale: {sales.totalSale}</p>
+            <p className="text-xl font-bold">Total Sale: {sales?.totalSale}</p>
           </div>
         </div>
         <div className="card w-78 bg-base-100 shadow-xl">
           <div className="card-body">
           <h2 className="text-5xl text-center"><AiOutlineAlipayCircle></AiOutlineAlipayCircle></h2>
-            <p className="text-xl font-bold">Total Profit: {sales.totalProfit}</p>
+            <p className="text-xl font-bold">Total Profit: {sales?.totalProfit}</p>
           
           </div>
         </div>
@@ -42,7 +43,7 @@ const SalesSummary = () => {
           <div className="card-body">
 
           <h2 className="text-5xl text-center"><AiOutlineBarChart></AiOutlineBarChart></h2>
-            <p className="text-xl font-bold">Total Investment: {sales.totalInvest}</p>
+            <p className="text-xl font-bold">Total Investment: {sales?.totalInvest}</p>
           </div>
         </div>
       </div>

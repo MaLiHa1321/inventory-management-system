@@ -27,7 +27,7 @@ const SalesCollection = () => {
     const handleCart =(product) =>{
       axiosSecure.post('/cart', product)
       .then(res =>{
-        if(res.data.insertedId > 0){
+        if(res.data.insertedId){
           Swal.fire("Added successfully!");
         }
       })
@@ -112,7 +112,7 @@ const SalesCollection = () => {
   </table>
 </div>
 <Link to='/dashboard/addToCart'> 
-<button className="btn btn-primary">Go for CheckOut</button>
+<button className="btn btn-success text-white">Go for CheckOut</button>
   </Link>
         </div>
     );
