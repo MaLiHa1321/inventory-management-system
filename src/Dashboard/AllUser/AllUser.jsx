@@ -38,6 +38,9 @@ const AllUser = () => {
 
    const totalPage = parseInt( Math.ceil(users?.length / limit));
 
+   const handleButtonClick = (users) =>{
+        console.log("user")
+   }
 
     return (
         <div className=''>
@@ -61,6 +64,7 @@ const AllUser = () => {
         <th >Email</th>
         <th >Role</th>
         <th>Shop Name</th>
+        <th>action</th>
       </tr>
     </thead>
     <tbody>
@@ -72,6 +76,14 @@ const AllUser = () => {
         <td>{user?.email}</td>
         <td>{user?.role}</td>
         <td>{user?.shopInfo?.shopName}</td>
+        <td>
+        { (!user?.role || user?.role.toLowerCase() !== 'admin') && (!user?.shopInfo?.shopName) ? (
+          <button onClick={() => handleButtonClick(user)} className='btn btn-outline btn-success'>Send Email</button>
+        ) : (
+         
+          null
+        )}
+      </td>
        
       </tr> )
       }

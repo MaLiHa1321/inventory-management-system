@@ -21,7 +21,7 @@ const Navbar = () => {
  
     const navLinks =<>
     <NavLink to='/'  className='mr-3 text-2xl'>Home</NavLink>
-    <NavLink to='/login' className='mr-3 text-2xl'>Login</NavLink>
+    {/* <NavLink to='/login' className='mr-3 text-2xl'>Login</NavLink> */}
     <NavLink to='/register' className='mr-3 text-2xl'>Register</NavLink>
    
     
@@ -62,11 +62,11 @@ const Navbar = () => {
     user?.email ?  <div className="navbar-end flex lg:flex-row">
       <img className='w-[40px] h-[40px] rounded-full' src={user?.photoURL} alt="" />
       <p>{user.displayName}</p>
-    <a onClick={logOutUser} className="btn">Logout</a>
+    <a onClick={logOutUser} className="btn  btn-outline btn-success">Logout</a>
   </div>
   :  <div className="navbar-end">
     <Link to="/login">
-    <a className="btn">Login</a>
+    <a className="btn btn-outline btn-success">Login</a>
     </Link>
   </div>
   }

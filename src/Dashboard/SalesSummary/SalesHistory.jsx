@@ -23,7 +23,7 @@ const SalesHistory = () => {
       <tr>
         <th>#</th>
         <th>Product Name</th>
-        <th>Date</th>
+        <th>Selling Date</th>
         <th>Profit</th>
       </tr>
     </thead>

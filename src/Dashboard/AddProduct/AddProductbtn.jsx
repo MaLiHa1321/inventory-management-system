@@ -23,12 +23,12 @@ const AddProductbtn = () => {
             </Helmet>
         {
             products?.length > 0 ? (<div className='flex'>
-            <div>
-                <input type="text" placeholder={`Total ${products.length} Product added`} className="input input-bordered input-primary w-full max-w-xs" />
+            <div className="w-full">
+                <input type="text" placeholder={`Total ${products.length} Product added`} className="input input-bordered input-primary w-full" />
                 </div>
             <div>
                 <Link to='/dashboard/addProduct'>
-                <button className='btn btn-primary'>Add A Product</button>
+                <button className='btn btn-success text-white'>Add A Product</button>
                 </Link>
             </div>
            </div>) :
@@ -36,7 +36,7 @@ const AddProductbtn = () => {
 
             
                    <Link to='/dashboard/addProduct'>
-                   <button className='btn btn-primary'>Add A Product</button>
+                   <button className='btn btn-success text-white'>Add A Product</button>
                    </Link>
                </div>
         }

@@ -46,43 +46,52 @@ const UpdateProduct = () => {
                 <title>InventTech | Update Product</title>
             </Helmet>
                 <form onSubmit={handleUpdateProduct} >
-                <div className="form-control">
+                  <div className='flex flex-col md:flex-row gap-3'>
+
+                <div className="form-control flex-1">
                   <label className="label">
                     <span className="label-text"> Product Name</span>
                   </label>
                   <input type="text" placeholder="name" name="name" defaultValue={productName} className="input input-bordered" required />
                 </div>
               
-                <div className="form-control">
+                <div className="form-control flex-1">
                   <label className="label">
                     <span className="label-text">Product Quantity</span>
                   </label>
                   <input type="number" placeholder="Product Quantity" name="quantity" defaultValue={quantity} className="input input-bordered" required />
                 </div>
-                <div className="form-control">
+                  </div>
+                  <div className='flex flex-col md:flex-row gap-3'>
+
+                <div className="form-control flex-1">
                   <label className="label">
                     <span className="label-text">Production Cost </span>
                   </label>
                   <input type="number" placeholder="Production cost" name="cost" defaultValue={productCost} className="input input-bordered" required />
                 </div>
-                <div className="form-control">
+                <div className="form-control flex-1">
                   <label className="label">
                     <span className="label-text">Profit Margin</span>
                   </label>
                   <input type="number" placeholder="Profit margin" name="profit" defaultValue={profit} className="input input-bordered" required />
                 </div>
-                <div className="form-control">
+                  </div>
+                  <div className='flex flex-col md:flex-row gap-3'>
+
+                <div className="form-control flex-1">
                   <label className="label">
                     <span className="label-text">Product Location</span>
                   </label>
                   <input type="text" placeholder="Product Location" name="location" defaultValue={location} className="input input-bordered" required />
                 </div>
-                <div className="form-control">
+                <div className="form-control flex-1">
                   <label className="label">
                     <span className="label-text">Product Discount</span>
                   </label>
                   <input type="number" placeholder="Product Discount" name="discount" defaultValue={discount} className="input input-bordered" required />
                 </div>
+                  </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Product sales</span>

@@ -70,7 +70,7 @@ const SalesCollection = () => {
         <th>quantity</th>
         <th>Discount</th>
         <th>Selling price</th>
-        <th>Action</th>
+        <th>Add to cart</th>
 
       </tr>
     </thead>
@@ -112,7 +112,7 @@ const SalesCollection = () => {
   </table>
 </div>
 <Link to='/dashboard/addToCart'> 
-<button className="btn btn-success text-white">Go for CheckOut</button>
+<button className="btn btn-success text-white mt-12">Proceed CheckOut</button>
   </Link>
         </div>
     );

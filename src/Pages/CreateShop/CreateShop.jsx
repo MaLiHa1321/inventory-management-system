@@ -74,7 +74,7 @@ const CreateShop = () => {
                   <label className="label">
                     <span className="label-text">Shop Owner Email</span>
                   </label>
-                  <input type="text" placeholder="Email"  name="email" defaultValue={user?.email} className="input input-bordered" required />
+                  <input type="text" placeholder="Email"  name="email" defaultValue={user?.email} readOnly className="input input-bordered" required />
                 </div>
                           </div>
                           <div className="flex flex-col md:flex-row gap-3">
@@ -83,7 +83,7 @@ const CreateShop = () => {
                   <label className="label">
                     <span className="label-text">Shop Owner Name</span>
                   </label>
-                  <input type="text" placeholder="Owner Name" name="ownerName" defaultValue={user?.displayName} className="input input-bordered" required />
+                  <input type="text" placeholder="Owner Name" name="ownerName" defaultValue={user?.displayName} readOnly className="input input-bordered" required />
                 </div>
                 <div className="form-control flex-1">
                   <label className="label">

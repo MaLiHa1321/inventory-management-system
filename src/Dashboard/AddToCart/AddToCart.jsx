@@ -124,11 +124,11 @@ const AddToCart = () => {
   
     
   </table>
-  <div className="divider"></div> 
+  {/* <div className="divider"></div> 
   <h2>Price: ${totalPrice} </h2>
   <h2>Total Discount: ${discount} </h2>
-  <h2>Total Price: ${total} </h2>
-  <button onClick={() => handleCart()}  className="btn btn-success">Get Paid</button>
+  <h2>Total Price: ${total} </h2> */}
+  <button onClick={() => handleCart()}  className="btn btn-outline btn-success mt-12">Get Paid</button>
 </div>
 
 

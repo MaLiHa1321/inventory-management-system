@@ -5,12 +5,14 @@ import { imageUpload } from '../../api/utilis';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
     const {user} = useAuth()
     const [shop, setShop] = useState([])
     const axiosSecure = useAxios()
     const userEmail = user?.email;
+    const navigate = useNavigate()
     useEffect(()=>{
         axiosSecure.get(`/shop?email=${userEmail}`)
         .then(res =>{
@@ -61,6 +63,7 @@ const AddProduct = () => {
         }
         else{
           Swal.fire('User product limit exceeded')
+          navigate('/payment')
            return;
         }
     
@@ -74,43 +77,52 @@ const AddProduct = () => {
            
            <div>
              <form onSubmit={handleAddShop} >
-                <div className="form-control">
+              <div className='flex flex-col md:flex-row gap-3'>
+
+                <div className="form-control flex-1">
                   <label className="label">
                     <span className="label-text"> Product Name</span>
                   </label>
                   <input type="text" placeholder="name" name="name" className="input input-bordered" required />
                 </div>
               
-                <div className="form-control">
+                <div className="form-control flex-1">
                   <label className="label">
                     <span className="label-text">Product Quantity</span>
                   </label>
                   <input type="number" placeholder="Product Quantity" name="quantity" min='0' className="input input-bordered" required />
                 </div>
-                <div className="form-control">
+              </div>
+              <div className='flex flex-col md:flex-row gap-3'>
+
+                <div className="form-control flex-1">
                   <label className="label">
                     <span className="label-text">Production Cost </span>
                   </label>
                   <input type="number" placeholder="Production cost" name="cost" min='0' className="input input-bordered" required />
                 </div>
-                <div className="form-control">
+                <div className="form-control flex-1">
                   <label className="label">
                     <span className="label-text">Profit Margin</span>
                   </label>
                   <input type="number" placeholder="Profit margin" name="profit" min='0' className="input input-bordered" required />
                 </div>
-                <div className="form-control">
+              </div>
+              <div className='flex flex-col md:flex-row gap-3'>
+
+                <div className="form-control flex-1">
                   <label className="label">
                     <span className="label-text">Product Location</span>
                   </label>
                   <input type="text" placeholder="Product Location" name="location" className="input input-bordered" required />
                 </div>
-                <div className="form-control">
+                <div className="form-control flex-1">
                   <label className="label">
                     <span className="label-text">Product Discount</span>
                   </label>
                   <input type="number" placeholder="Product Discount" name="discount" min='0' className="input input-bordered" required />
                 </div>
+              </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Product sales</span>

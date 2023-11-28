@@ -87,7 +87,7 @@ const Sidebar = () => {
     <ul >
       <li><NavLink to='/dashboard/adminHome' className='mb-3 text-xl'>Admin Home</NavLink></li>
       <li><NavLink to='/dashboard/allUser' className='m-3 text-xl'>All User</NavLink></li>
-      <li><NavLink to='/dashboard/allShop' className='m-3 text-xl'>All Shop</NavLink></li>
+      <li><NavLink to='/dashboard/allShop' className='m-3 text-base'>Manage Shop</NavLink></li>
       <li><NavLink to='/dashboard/allProduct' className='m-3 text-xl'>All Product</NavLink></li>
       <div className="divider"></div> 
       <li><NavLink to='/' className='m-3'>Home</NavLink></li>
