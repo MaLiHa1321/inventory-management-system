@@ -1,9 +1,8 @@
 
 import useAuth from "../../hook/useAuth";
 import { imageUpload } from "../../api/utilis";
-import useAxios from "../../hook/useAxios";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../hook/useAxiosPublic";
 
 
 
@@ -11,8 +10,8 @@ import { useNavigate } from "react-router-dom";
 const CreateShop = () => {
  
     const {user} = useAuth()
-    const axiosSecure = useAxios()
-    const navigate= useNavigate();
+    const axiosSecure = useAxiosPublic()
+  
   
          
             const handleAddShop = async (e) => {
@@ -25,32 +24,41 @@ const CreateShop = () => {
                 const productLimit = 3;
                 const info = form.des.value;
                 const image = form.image.files[0];
-                const imageData = await imageUpload(image)
-                const photo = imageData?.data?.display_url;
 
-                const shopInformation = {shopName,email,ownerName,location,info,photo, productLimit}
-                axiosSecure.post('/shop', shopInformation)
-                .then(res =>{
-                  console.log(res.data)
-                })
-                .catch((err) =>{
-                    console.log(err)
-                })
+                try{
+                  const imageData = await imageUpload(image)
+                  const photo = imageData?.data?.display_url;
+  
+                  const shopInformation = {shopName,email,ownerName,location,info,photo, productLimit}
+                const response = axiosSecure.post(`/shop?email=${user?.email}`, shopInformation)
+                  if (response.data?.status === 403) {
+                    Swal.fire("User already has a shop");
+                    return;
+                  }
+  
+                 const shopInfo ={shopName, photo}
+  
+              
+                  axiosSecure.patch(`/users/manager/${user?.email}`,shopInfo)
+                  .then(res =>{
+                    console.log(res.data)
+                     if(res.data?.modifiedCount > 0){
+                      Swal.fire("Congress! You've Successfully created your shop.");
+                     
+  
+                     }
+                  })
 
-               const shopInfo ={shopName, photo}
-
-            
-                axiosSecure.patch(`/users/manager/${user?.email}`,shopInfo)
-                .then(res =>{
-                  console.log(res.data)
-                   if(res.data?.modifiedCount > 0){
-                    Swal.fire("Congress! You've Successfully created your shop.");
-                    navigate('/dashboard')
-                    // window.location.reload();
-
-                   }
-                })
-                .catch(err => console.log(err))
+                }
+          
+     catch (err) {
+    console.error(err);
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'An error occurred while creating the shop.',
+    });
+  }
               
                
               
