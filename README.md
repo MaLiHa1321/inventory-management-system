@@ -8,5 +8,14 @@ Basically my project is based on Invent Management System. The feature of this w
 - Admin can visualized the users and shop manager.
 - Admin can manage the shop and manage ther product.
 
+# technology I used
+- javascript
+- Tailwind css
+- daisyui
+- react js
+- node js
+- express js
+- mongodb
+
 # Live link of this website
 https://inventory-management-pro-5216c.web.app
