@@ -3,6 +3,7 @@ import useAuth from "../../hook/useAuth";
 import { imageUpload } from "../../api/utilis";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hook/useAxiosPublic";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -11,6 +12,7 @@ const CreateShop = () => {
  
     const {user} = useAuth()
     const axiosSecure = useAxiosPublic()
+    const navigate = useNavigate();
   
   
          
@@ -45,7 +47,7 @@ const CreateShop = () => {
                      if(res.data?.modifiedCount > 0){
                       Swal.fire("Congress! You've Successfully created your shop.");
                      
-  
+                      navigate('/dashboard/userHome')
                      }
                   })
 
