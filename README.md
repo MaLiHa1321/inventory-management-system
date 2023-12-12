@@ -8,6 +8,10 @@ Basically my project is based on Invent Management System. The feature of this w
 - Admin can visualized the users and shop manager.
 - Admin can manage the shop and manage ther product.
 
+# Unique Features
+- Website light and dark theme are added for better web interface.
+- User can send message from contact page and the message is directly go to the admin orginal email.
+
 # technology I used
 - javascript
 - Tailwind css
