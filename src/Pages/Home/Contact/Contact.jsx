@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Container from "../Container/Container";
 
 const Contact = () => {
@@ -12,9 +13,10 @@ const Contact = () => {
       <h1 className="mb-5 text-2xl font-bold">We Carry More Than Just Good Skills</h1>
       <h2 className='text-3xl'>Let's work together!</h2>
         </div>
-        <div>
+          <Link to='/contactEmail'>
          <button className="btn btn-success text-white">Contact us</button>
-        </div>
+          </Link>
+       
 
     </div>
   </div>

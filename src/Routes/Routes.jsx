@@ -24,6 +24,7 @@ import Payment from "../Dashboard/Payment/Payment";
 import Paymethod from "../Dashboard/Paymethod/Paymethod";
 import SalesSummary from "../Dashboard/SalesSummary/SalesSummary";
 import AdminHome from "../Dashboard/AdminHome/AdminHome";
+import ConatctViaEmail from "../Pages/Home/Contact/ConatctViaEmail";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -48,6 +49,10 @@ import AdminHome from "../Dashboard/AdminHome/AdminHome";
             element: <PrivateRoute>
                 <CreateShop></CreateShop>
             </PrivateRoute>
+        },
+        {
+            path: 'contactEmail',
+            element: <ConatctViaEmail></ConatctViaEmail>
         }
       ]
     },
